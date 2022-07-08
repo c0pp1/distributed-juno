@@ -163,8 +163,9 @@ total_time_list    = []
 
 for n_p in partitions:
     for n_w in workers:
-        for n_t in threads:
-
+        #for n_t in threads:
+            
+            n_t = 1 # hardcoding threads
             worker_par = {"nthreads": int(n_t), "n_workers": int(n_w)}
 
             cluster = SSHCluster(
@@ -176,7 +177,7 @@ for n_p in partitions:
             client = Client(cluster)
 #           print(client)
 
-#            print("\n\nPROCESSING:\n")
+            print(f"\n\nPROCESSING: {n_w} workers and {n_p} partitions\n")
             #################################
             time_0  = time()
 
@@ -185,7 +186,7 @@ for n_p in partitions:
             stop    = time()
 
             load_time = stop-start
-#            print("Load time:\t", load_time)
+            print("Load time:\t", load_time)
 
             start   = time()
             rotated = db.map(rotate_ev, data_db)
@@ -206,16 +207,17 @@ for n_p in partitions:
             stop    = time()
 
             compute_time = stop-start
-#            print("Compute time:\t", compute_time)
+            print("Compute time:\t", compute_time)
 
 
 
             time_1 = time()
             total_time = time_1 - time_0
-#            print("\n\nTotal time:\t", total_time)
+            print("\n\nTotal time:\t", total_time)
             #################################
 
             client.shutdown()
+            client.close()
 
             worker_list.append(n_w)        
             thread_list.append(n_t)   
@@ -239,7 +241,7 @@ grid_results = pd.DataFrame(
         "total_time"    : total_time_list,
     }
 )
-grid_results.to_csv(f"grid_results_wtp.csv", index=False)
+grid_results.to_csv("grid_results_wp.csv", index=False)
 ###############################################################################################################
 ###############################################################################################################
 ###############################################################################################################
