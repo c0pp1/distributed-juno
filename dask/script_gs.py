@@ -166,7 +166,7 @@ for n_w in workers:
     for n_t in threads:
             
             # n_t = 1 # hardcoding threads
-            n_p = 16 # hardcode partitions
+            n_p = n_w # hardcode partitions
             
             worker_par = {"nthreads": int(n_t), "n_workers": int(n_w)}
 
@@ -243,7 +243,7 @@ grid_results = pd.DataFrame(
         "total_time"    : total_time_list,
     }
 )
-grid_results.to_csv("grid_results_wt.csv", index=False)
+grid_results.to_csv("grid_results_wtp.csv", index=False)
 ###############################################################################################################
 ###############################################################################################################
 ###############################################################################################################
