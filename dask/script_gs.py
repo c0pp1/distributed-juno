@@ -166,7 +166,7 @@ for n_w in workers:
     for n_t in threads:
             
             # n_t = 1 # hardcoding threads
-            n_p = n_w # hardcode partitions
+            n_p = 4*n_w # hardcode partitions
             
             worker_par = {"nthreads": int(n_t), "n_workers": int(n_w)}
 
