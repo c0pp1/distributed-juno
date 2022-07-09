@@ -161,11 +161,13 @@ mapping_time_list  = []
 compute_time_list  = []
 total_time_list    = []
 
-for n_p in partitions:
-    for n_w in workers:
-        #for n_t in threads:
+# for n_p in partitions:
+for n_w in workers:
+    for n_t in threads:
             
-            n_t = 1 # hardcoding threads
+            # n_t = 1 # hardcoding threads
+            n_p = 16 # hardcode partitions
+            
             worker_par = {"nthreads": int(n_t), "n_workers": int(n_w)}
 
             cluster = SSHCluster(
@@ -177,7 +179,7 @@ for n_p in partitions:
             client = Client(cluster)
 #           print(client)
 
-            print(f"\n\nPROCESSING: {n_w} workers and {n_p} partitions\n")
+            print(f"\n\nPROCESSING: {n_w} workers {n_t} threads and {n_p} partitions\n")
             #################################
             time_0  = time()
 
@@ -241,7 +243,7 @@ grid_results = pd.DataFrame(
         "total_time"    : total_time_list,
     }
 )
-grid_results.to_csv("grid_results_wp.csv", index=False)
+grid_results.to_csv("grid_results_wt.csv", index=False)
 ###############################################################################################################
 ###############################################################################################################
 ###############################################################################################################
