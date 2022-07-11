@@ -5,6 +5,7 @@ presentation/
 benchmark.py
 reports/
 *.tar
+figures/
 
 
 # Byte-compiled / optimized / DLL files
