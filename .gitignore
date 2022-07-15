@@ -3,9 +3,7 @@ data/
 vm-ips.txt
 presentation/
 benchmark.py
-reports/
 *.tar
-figures/
 
 
 # Byte-compiled / optimized / DLL files
