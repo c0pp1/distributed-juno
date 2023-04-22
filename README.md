@@ -9,7 +9,7 @@ The interplay between some hyperparameters such as the number of workers, the nu
 
 
 <p align="center">
-    <img src="dask/plots/heatmaps/total_time_wp.svg" alt="Partitions vs. Workers, one thread per worker" width="60%">
+    <img src="dask/plots/heatmaps/total_time_wp.svg" alt="Partitions vs. Workers, one thread per worker" width="75%">
 </p>
 
 The file [``final-notebook.ipynb``](final-notebook.ipynb) contains a résumé of the work done.
